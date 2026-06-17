@@ -1119,11 +1119,11 @@ public class ParserService {
         Optional<String> stoolReducing = getFieldValue(lines, "Stool Reducing Substance");
         stoolReducing.ifPresent(value -> bloodReportData.put("stoolReducingSugar", value.replaceFirst("Stool Reducing Substance", "").trim()));
 
-        // FIX 15: stoolPusCells — key changed + index fixed from t[2] to t[1]
+        // FIX 15: stoolPusCells — key changed
         Optional<String> stoolPusCells = getFieldValue(lines, "Pus Cells");
         stoolPusCells.ifPresent(value -> {
             String[] t = value.trim().split("\\s+");
-            if (t.length > 1) bloodReportData.put("stoolPusCells", t[1]);
+            if (t.length > 2) bloodReportData.put("stoolPusCells", t[2]);
         });
 
         // FIX 16: stoolRedBloodCells — key changed
